@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-r-backend",
+  "version": "1.0.0",
+  "description": "Backend serverless functions for Portfolio R",
+  "main": "api/contact.js",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

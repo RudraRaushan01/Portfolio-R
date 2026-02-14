@@ -1,4 +1,6 @@
 // api/contact.js
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
@@ -8,11 +10,42 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    // TODO: Integrate with an email service like Resend, SendGrid, or Nodemailer here.
-    // For now, we'll just log the data and return success.
-    console.log('Form submission received:', { name, email, message });
+    try {
+      // Create Transporter
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL_USER, // Your Gmail address (rudraraushan000@gmail.com)
+          pass: process.env.EMAIL_PASS, // Your App Password
+        },
+      });
 
-    return res.status(200).json({ success: true, message: 'Message sent successfully!' });
+      // Email Options
+      const mailOptions = {
+        from: `"${name}" <${email}>`, // "Name" <sender@example.com>
+        to: process.env.EMAIL_USER, // Send to yourself
+        replyTo: email,
+        subject: `New Message from Portfolio: ${name}`,
+        text: `You have a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        `,
+      };
+
+      // Send Email
+      await transporter.sendMail(mailOptions);
+
+      console.log('Email sent successfully');
+      return res.status(200).json({ success: true, message: 'Message sent successfully!' });
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      return res.status(500).json({ error: 'Failed to send email' });
+    }
   } else {
     // Handle any other HTTP method
     res.setHeader('Allow', ['POST']);

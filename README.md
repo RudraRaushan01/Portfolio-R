@@ -37,10 +37,17 @@ This project is ready to be deployed on Vercel.
 
 ### Contact Form Setup
 
-The contact form is configured to send data to the `/api/contact` endpoint.
+The contact form is configured to send emails to `rudraraushan000@gmail.com` using **Nodemailer** and **Gmail**.
 
-- By default, the backend (`api/contact.js`) logs the form data to the Vercel Function Logs.
-- **To receive emails:** You will need to modify `api/contact.js` to integrate with an email service provider like **Resend**, **SendGrid**, or **Nodemailer**.
+**Important:** To make this work, you must set the following **Environment Variables** in your Vercel Project Settings:
+
+1.  **EMAIL_USER**: Your Gmail address (e.g., `rudraraushan000@gmail.com`).
+2.  **EMAIL_PASS**: Your **Gmail App Password** (Not your login password!).
+    - Go to [Google Account Security](https://myaccount.google.com/security).
+    - Search for "App passwords".
+    - Create a new app password and copy the 16-character code.
+
+without these variables, the contact form will fail to send emails.
 
 ## Local Development
 

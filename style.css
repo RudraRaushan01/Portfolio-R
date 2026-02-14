@@ -121,6 +121,10 @@ img {
     display: block;
 }
 
+main {
+    min-height: calc(100vh - 80px - 150px); /* rough estimate of header + footer */
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
