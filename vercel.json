@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/index", "destination": "/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/services", "destination": "/services.html" },
+    { "source": "/projects", "destination": "/projects.html" },
+    { "source": "/contact", "destination": "/contact.html" }
+  ],
+  "functions": {
+    "api/contact.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
+}

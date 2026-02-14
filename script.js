@@ -73,7 +73,46 @@ document.addEventListener("DOMContentLoaded", () => {
     footerYear.innerHTML = footerYear.innerHTML.replace("2024", currentYear);
   }
 
-  // 4. Smooth Scrolling for Anchor Links (if any remain)
+  // 4. Contact Form Submission
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+      contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.innerText;
+
+          submitButton.innerText = "Sending...";
+          submitButton.disabled = true;
+
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+              const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+              });
+
+              if (response.ok) {
+                  alert("Message sent successfully!");
+                  contactForm.reset();
+              } else {
+                  alert("Failed to send message. Please try again.");
+              }
+          } catch (error) {
+              console.error("Error:", error);
+              alert("An error occurred. Please try again later.");
+          } finally {
+              submitButton.innerText = originalButtonText;
+              submitButton.disabled = false;
+          }
+      });
+  }
+
+  // 5. Smooth Scrolling for Anchor Links (if any remain)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
