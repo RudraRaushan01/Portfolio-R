@@ -15,7 +15,62 @@
     --font-heading: 'Space Grotesk', sans-serif;
 
     --transition: all 0.3s ease;
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     --shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    --glow: 0 0 20px rgba(112, 0, 255, 0.5);
+}
+
+/* =========================================
+   1.1 Keyframe Animations
+   ========================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(112, 0, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(112, 0, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(112, 0, 255, 0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* =========================================
@@ -79,6 +134,8 @@ img {
 
 .section {
     padding: 100px 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
 }
 
 .section-header {
@@ -110,6 +167,9 @@ img {
     cursor: pointer;
     font-family: var(--font-heading);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .btn-primary {
@@ -120,8 +180,8 @@ img {
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(112, 0, 255, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(112, 0, 255, 0.6);
 }
 
 .btn-outline {
@@ -132,13 +192,34 @@ img {
 }
 
 .btn-outline:hover {
-    background: rgba(112, 0, 255, 0.1);
+    background: var(--primary-color);
     color: var(--white);
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+    transform: translateY(-3px);
 }
 
 .btn-sm {
     padding: 8px 20px;
     font-size: 0.9rem;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
 }
 
 /* =========================================
@@ -180,10 +261,32 @@ img {
     font-size: 1rem;
     font-weight: 500;
     color: var(--text-color);
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
 }
 
 .nav-links li a:hover {
-    color: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
+}
+
+.nav-links li a.active {
+    color: var(--white);
 }
 
 .hamburger {
@@ -236,6 +339,8 @@ img {
     margin-bottom: 20px;
 }
 
+/* Cursor style moved to JS section at end of file for better organization with JS changes */
+
 .description {
     font-size: 1.1rem;
     color: var(--text-muted);
@@ -265,6 +370,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: float 6s ease-in-out infinite;
 }
 
 .img-box img {
@@ -272,6 +378,11 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.img-box:hover img {
+    transform: scale(1.1);
 }
 
 .shape {
@@ -279,6 +390,7 @@ img {
     filter: blur(80px);
     z-index: 1;
     opacity: 0.6;
+    animation: float 8s ease-in-out infinite reverse;
 }
 
 .shape-1 {
@@ -297,6 +409,7 @@ img {
     bottom: -50px;
     left: 0;
     border-radius: 50%;
+    animation-delay: 2s;
 }
 
 /* =========================================
@@ -374,15 +487,18 @@ img {
     background: var(--bg-secondary);
     padding: 40px 30px;
     border-radius: 15px;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(1.02);
     background: #161636;
+    border-color: rgba(112, 0, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .service-card::before {
@@ -396,6 +512,23 @@ img {
     transform: scaleX(0);
     transform-origin: left;
     transition: all 0.4s ease;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(112, 0, 255, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.service-card:hover::after {
+    opacity: 1;
 }
 
 .service-card:hover::before {
@@ -413,11 +546,24 @@ img {
     font-size: 1.8rem;
     border-radius: 10px;
     margin-bottom: 25px;
+    transition: var(--transition-bounce);
+}
+
+.service-card:hover .icon-box {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: rotateY(360deg);
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
 }
 
 .service-card h3 {
     margin-bottom: 15px;
     font-size: 1.4rem;
+    transition: var(--transition);
+}
+
+.service-card:hover h3 {
+    color: var(--accent);
 }
 
 .service-card p {
@@ -443,11 +589,13 @@ img {
     overflow: hidden;
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary-color);
 }
 
 .project-content {
@@ -567,6 +715,8 @@ img {
     outline: none;
     border-color: var(--primary-color);
     background-color: #0f0f22;
+    box-shadow: 0 0 15px rgba(112, 0, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 /* =========================================
@@ -604,7 +754,8 @@ img {
 
 .social-links a:hover {
     background: var(--primary-color);
-    transform: translateY(-3px);
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.5);
 }
 
 /* =========================================
@@ -656,4 +807,54 @@ img {
     .stats-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* =========================================
+   12. JavaScript Driven Styles
+   ========================================= */
+
+/* Mobile Menu Active State */
+.nav-links.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px; /* Header height */
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 26, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    animation: slideDown 0.3s ease forwards;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typing Effect Cursor */
+/* We keep the CSS animation as a fallback or enhancement, 
+   but ensuring the JS typing doesn't break layout */
+.typing-text {
+    border-right: 2px solid var(--accent);
+    padding-right: 5px;
+    animation: blinkCursor 0.7s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--accent); }
+}
+
+.typing-text::after {
+    /* Remove the pseudo-element cursor since we are using border-right now for simpler JS compatibility */
+    content: none; 
 }
