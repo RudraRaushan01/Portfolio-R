@@ -862,3 +862,100 @@ main {
     /* Remove the pseudo-element cursor since we are using border-right now for simpler JS compatibility */
     content: none; 
 }
+
+/* =========================================
+   13. Qualification Section
+   ========================================= */
+.qualification-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qualification-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+.qualification-button {
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qualification-button:hover,
+.qualification-button.active {
+    color: var(--primary-color);
+}
+
+.qualification-sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qualification-content {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.5s ease;
+}
+
+.qualification-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.qualification-data {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    column-gap: 1.5rem;
+}
+
+.qualification-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.qualification-subtitle {
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.qualification-calendar {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.qualification-rounder {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.qualification-line {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: var(--primary-color);
+    transform: translate(6px, -7px);
+}
+
+/* Scroll Adjustment for Fixed Header */
+section {
+    scroll-margin-top: 80px;
+}

@@ -1,26 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Initial load
     initGlobal();
-    initNavigation(); // Set up global link interception once
+    initNavigation();
     initPage();
-
-    // Handle Browser Back/Forward
-    window.onpopstate = (event) => {
-        if (event.state) {
-            loadContent(window.location.pathname, false);
-        } else {
-            // Fallback for initial state if not set
-            loadContent(window.location.pathname, false);
-        }
-    };
 });
 
 // Global components (Header, Mobile Menu)
 function initGlobal() {
     // 1. Mobile Menu Toggle
-    // Clean up existing listener if replacing (crucial for re-running)
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
+    const navItems = document.querySelectorAll(".nav-links a");
 
     if (hamburger && navLinks) {
         // Clone and replace to strip existing listeners
@@ -30,107 +20,74 @@ function initGlobal() {
         const currentHamburger = document.querySelector(".hamburger");
         
         currentHamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("mobile-active");
+             toggleMobileMenu(navLinks, currentHamburger);
+        });
 
-            // Animate Hamburger
-            const icon = currentHamburger.querySelector("i");
-            if (navLinks.classList.contains("mobile-active")) {
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-xmark");
-            } else {
-                icon.classList.remove("fa-xmark");
-                icon.classList.add("fa-bars");
-            }
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                if (navLinks.classList.contains("mobile-active")) {
+                    toggleMobileMenu(navLinks, currentHamburger);
+                }
+            });
         });
     }
 }
 
-// Initialize Navigation (Run ONCE)
+function toggleMobileMenu(navLinks, hamburgerBtn) {
+    navLinks.classList.toggle("mobile-active");
+    const icon = hamburgerBtn.querySelector("i");
+    if (navLinks.classList.contains("mobile-active")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+}
+
+// Initialize Navigation
 function initNavigation() {
-    document.body.addEventListener("click", (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
+    // Smooth scrolling is handled by CSS (html { scroll-behavior: smooth; })
+    // But we need to update active link on scroll
+    
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-        // Check if it's an internal link
-        const href = link.getAttribute("href");
-        if (!href || href.startsWith("#") || href.startsWith("http") || href.startsWith("mailto:")) return;
-
-        // Prevent default navigation
-        e.preventDefault();
+    window.addEventListener("scroll", () => {
+        let current = "";
         
-        // Close mobile menu if open
-        const navLinks = document.querySelector(".nav-links");
-        if (navLinks && navLinks.classList.contains("mobile-active")) {
-            navLinks.classList.remove("mobile-active");
-            const icon = document.querySelector(".hamburger i");
-            if (icon) {
-               icon.classList.remove("fa-xmark");
-               icon.classList.add("fa-bars"); 
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            // Offset for fixed header (80px) + some buffer
+            if (pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute("id");
             }
-        }
+        });
 
-        loadContent(href);
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
     });
 }
 
 // Page-specific Logic
 function initPage() {
-    // 2. Typing Effect for Hero Section
+    // 1. Typing Effect for Hero Section
     initTypingEffect();
 
-    // 3. Dynamic Year in Footer
+    // 2. Dynamic Year in Footer
     initFooterYear();
 
-    // 4. Contact Form Submission
+    // 3. Contact Form Submission
     initContactForm();
 
-    // 5. Highlight Active Link
-    updateActiveLink();
-
-    // 6. Smooth Scrolling for Anchor Links
-    initSmoothScroll();
-    
-    // 6. Smooth Scrolling for Anchor Links
-    initSmoothScroll();
-    
-    // 7. No need to re-attach global interceptors because of Event Delegation in initNavigation()
-}
-
-async function loadContent(url, push = true) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Failed to load page");
-
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-
-        // Swap Main Content
-        const newMain = doc.querySelector("main");
-        const currentMain = document.querySelector("main");
-        
-        if (newMain && currentMain) {
-            // Instant Swap
-            currentMain.innerHTML = newMain.innerHTML;
-            
-            // Update Title
-            document.title = doc.title;
-
-            // Update URL
-            if (push) {
-                window.history.pushState({}, "", url);
-            }
-
-            // Scroll to top
-            window.scrollTo(0, 0);
-
-            // Re-initialize scripts
-            initPage();
-        }
-
-    } catch (error) {
-        console.error("Error loading page:", error);
-    }
+    // 4. Qualification Tabs
+    initQualificationTabs();
 }
 
 function initTypingEffect() {
@@ -141,10 +98,9 @@ function initTypingEffect() {
         let charIndex = 0;
         let isDeleting = false;
         let typeSpeed = 100;
-        let timerId = null; // Store timer to clear if needed
+        let timerId = null;
 
         function type() {
-            // Check if element still exists (user might have navigated away)
             const currentElement = document.querySelector(".typing-text");
             if (!currentElement) return;
 
@@ -172,7 +128,6 @@ function initTypingEffect() {
             timerId = setTimeout(type, typeSpeed);
         }
 
-        // Check helper to prevent overwriting if already running/initialized
         if (typingTextElement.parentElement.classList.contains("role")) {
              type();
         }
@@ -227,38 +182,21 @@ function initContactForm() {
     }
 }
 
-function updateActiveLink() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll(".nav-links a");
-    
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        
-        // Exact match or default home
-        const href = link.getAttribute("href");
-        
-        // Handle / vs /index.html and clean URLs
-        const cleanPath = currentPath.replace(".html", "").replace(/^\//, "");
-        const cleanHref = href.replace(".html", "").replace(/^\//, "");
+function initQualificationTabs() {
+    const tabs = document.querySelectorAll(".qualification-button");
+    const contents = document.querySelectorAll(".qualification-content");
 
-        if (cleanPath === cleanHref || (cleanPath === "" && cleanHref === "index")) {
-            link.classList.add("active");
-        }
-    });
-}
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const target = document.querySelector(tab.dataset.target);
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        // Clone to replace/remove old listeners
-        const newAnchor = anchor.cloneNode(true);
-        anchor.parentNode.replaceChild(newAnchor, anchor);
-        
-        newAnchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
+            // Remove active class from all tabs & contents
+            tabs.forEach(t => t.classList.remove("active"));
+            contents.forEach(c => c.classList.remove("active"));
+
+            // Add active class to clicked tab & target content
+            tab.classList.add("active");
+            target.classList.add("active");
         });
     });
 }
