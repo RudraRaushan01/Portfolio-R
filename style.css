@@ -939,6 +939,12 @@ main {
     color: var(--text-muted);
 }
 
+.qualification-location {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
 .qualification-rounder {
     display: inline-block;
     width: 13px;
