@@ -1,5 +1,7 @@
 // api/contact.js
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend('re_2ZZc4oMt_HW2cHxyX1o4obDA53JTczNpa');
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -11,20 +13,11 @@ export default async function handler(req, res) {
     }
 
     try {
-      // Create Transporter
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER, // Your Gmail address (rudraraushan000@gmail.com)
-          pass: process.env.EMAIL_PASS, // Your App Password
-        },
-      });
-
-      // Email Options
-      const mailOptions = {
-        from: `"${name}" <${email}>`, // "Name" <sender@example.com>
-        to: process.env.EMAIL_USER, // Send to yourself
-        replyTo: email,
+      // Send Email via Resend
+      const { data, error } = await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: 'rudraraushan000@gmail.com',
+        reply_to: email,
         subject: `New Message from Portfolio: ${name}`,
         text: `You have a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
         html: `
@@ -34,12 +27,14 @@ export default async function handler(req, res) {
           <p><strong>Message:</strong></p>
           <p>${message.replace(/\n/g, '<br>')}</p>
         `,
-      };
+      });
 
-      // Send Email
-      await transporter.sendMail(mailOptions);
+      if (error) {
+        console.error('Error sending email:', error);
+        return res.status(400).json({ error: 'Failed to send email' });
+      }
 
-      console.log('Email sent successfully');
+      console.log('Email sent successfully via Resend');
       return res.status(200).json({ success: true, message: 'Message sent successfully!' });
 
     } catch (error) {
