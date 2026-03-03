@@ -1,6 +1,6 @@
 const { Resend } = require('resend');
 
-const resend = new Resend('re_2ZZc4oMt_HW2cHxyX1o4obDA53JTczNpa');
+const resend = new Resend('re_EDK9t77w_H9GaATrNC89EgQEmey59SbKw');
 
 console.log('Attempting to send test email to rudraraushan000@gmail.com...');
 
@@ -9,7 +9,7 @@ resend.emails.send({
   to: 'rudraraushan000@gmail.com',
   subject: 'Hello World',
   html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-}).then((response) => {
+}).then((response) => { 
     if (response.error) {
         console.error('Error sending email:', response.error);
     } else {

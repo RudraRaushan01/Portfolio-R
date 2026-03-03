@@ -169,7 +169,9 @@ function initContactForm() {
                     alert("Message sent successfully!");
                     contactForm.reset();
                 } else {
-                    alert("Failed to send message. Please try again.");
+                    const body = await response.json().catch(() => null);
+                    const msg = body && body.error ? body.error : 'Failed to send message. Please try again.';
+                    alert(msg);
                 }
             } catch (error) {
                 console.error("Error:", error);
