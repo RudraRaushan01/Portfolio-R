@@ -145,41 +145,57 @@ function initFooterYear() {
 }
 
 function initContactForm() {
+    // Initialise EmailJS with your Public Key
+    // Get it from: https://dashboard.emailjs.com/admin/account
+    emailjs.init("C7t9Dk01_BiOXk1pV");
+
     const contactForm = document.getElementById("contactForm");
+    const statusDiv = document.getElementById("formStatus");
+
+    function showStatus(message, isSuccess) {
+        statusDiv.textContent = message;
+        statusDiv.style.display = "block";
+        statusDiv.style.color = isSuccess ? "#4ade80" : "#f87171";
+        statusDiv.style.fontWeight = "500";
+    }
+
     if (contactForm) {
-        contactForm.addEventListener("submit", async (e) => {
+        contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerText;
 
-            submitButton.innerText = "Sending...";
-            submitButton.disabled = true;
+            const submitBtn = document.getElementById("contactSubmitBtn");
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+            // Validate fields
+            const name = document.getElementById("from_name").value.trim();
+            const email = document.getElementById("from_email").value.trim();
+            const message = document.getElementById("message").value.trim();
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    alert("Message sent successfully!");
-                    contactForm.reset();
-                } else {
-                    const body = await response.json().catch(() => null);
-                    const msg = body && body.error ? body.error : 'Failed to send message. Please try again.';
-                    alert(msg);
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("An error occurred. Please try again later.");
-            } finally {
-                submitButton.innerText = originalButtonText;
-                submitButton.disabled = false;
+            if (!name || !email || !message) {
+                showStatus("Please fill in all fields before sending.", false);
+                return;
             }
+
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+            statusDiv.style.display = "none";
+
+            emailjs.send("service_wqw5oz5", "template_kwi1u78", {
+                from_name: name,
+                from_email: email,
+                message: message
+            })
+            .then(function () {
+                showStatus("✅ Message sent! I'll get back to you soon.", true);
+                contactForm.reset();
+            })
+            .catch(function (error) {
+                console.error("EmailJS error:", error);
+                showStatus("❌ Failed to send. Please try again or email me directly.", false);
+            })
+            .finally(function () {
+                submitBtn.textContent = "Send Message";
+                submitBtn.disabled = false;
+            });
         });
     }
 }

@@ -1,450 +1,601 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-11V9LJ7WJ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-11V9LJ7WJ2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-11V9LJ7WJ2');
-</script>
+      gtag("config", "G-11V9LJ7WJ2");
+    </script>
 
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W7V7ZTH6');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W7V7ZTH6");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rudra | Backend Developer</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="310x310" href="icon/ms-icon-310x310.png">
-    <link rel="apple-touch-icon" sizes="310x310" href="icon/ms-icon-310x310.png">
-    <link rel="manifest" href="icon/manifest.json">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="310x310"
+      href="icon/ms-icon-310x310.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="310x310"
+      href="icon/ms-icon-310x310.png"
+    />
+    <link rel="manifest" href="icon/manifest.json" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"> -->
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7V7ZTH6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W7V7ZTH6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
     <header class="header">
-        <nav class="navbar container">
-            <a href="index.html" class="logo">Ru<span class="highlight">dra.</span></a>
+      <nav class="navbar container">
+        <a href="index.html" class="logo"
+          >Ru<span class="highlight">dra.</span></a
+        >
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#qualification">Qualification</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact" class="btn btn-sm">Contact Me</a></li>
-            </ul>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#qualification">Qualification</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact" class="btn btn-sm">Contact Me</a></li>
+        </ul>
 
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </nav>
+        <div class="hamburger">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-container">
-                <div class="hero-content">
-                    <p class="subtitle">Hello, I'm</p>
-                    <h1 class="title">Rudra</h1>
-                    <h2 class="role">Backend <span class="typing-text">Developer</span></h2>
-                    <p class="description">
-                        I build scalable, efficient, and secure backend systems that power modern web applications.
-                        Turning complex logic into seamless digital experiences.
-                    </p>
-                    <div class="hero-btns">
-                        <a href="#projects" class="btn btn-primary">View Work</a>
-                        <a href="#contact" class="btn btn-outline">Let's Talk</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="img-box">
-                        <img src="bg.png" alt="Rudra - Backend Developer">
-                    </div>
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                </div>
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="container hero-container">
+          <div class="hero-content">
+            <p class="subtitle">Hello, I'm</p>
+            <h1 class="title">Rudra</h1>
+            <h2 class="role">
+              Backend <span class="typing-text">Developer</span>
+            </h2>
+            <p class="description">
+              I build scalable, efficient, and secure backend systems that power
+              modern web applications. Turning complex logic into seamless
+              digital experiences.
+            </p>
+            <div class="hero-btns">
+              <a href="#projects" class="btn btn-primary">View Work</a>
+              <a href="#contact" class="btn btn-outline">Let's Talk</a>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About <span class="highlight">Me</span></h2>
-                    <p class="section-subtitle">Get to know me better</p>
-                </div>
-
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>Passionate about <span class="highlight">Backend Engineering</span></h3>
-                        <p>
-                            Motivated postgraduate computer applications student and aspiring software
-                            developer with strong skills in Java, SQL, and cloud technologies.
-                            Passionate about backend development and scalable systems.
-                            Experienced in academic and personal projects, including web applications
-                            and database design. Continuously learning, building, and preparing to
-                            contribute effectively in professional tech environments.
-                        </p>
-
-                        <div class="about-btns" style="margin-bottom: 30px;">
-                            <a href="Raushan Kumar Software_Developer.pdf" download class="btn btn-primary"><i class="fa-solid fa-download"></i>
-                                Download Resume</a>
-                        </div>
-
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <span class="stat-number">1+</span>
-                                <span class="stat-label">Years Exp.</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">5+</span>
-                                <span class="stat-label">Projects</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">10+</span>
-                                <span class="stat-label">Happy Clients</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="hero-image">
+            <div class="img-box">
+              <img src="bg.png" alt="Rudra - Backend Developer" />
             </div>
-        </section>
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Qualification Section -->
-        <section id="qualification" class="section qualification">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">My <span class="highlight">Qualification</span></h2>
-                    <p class="section-subtitle">Education & Experience</p>
+      <!-- About Section -->
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              About <span class="highlight">Me</span>
+            </h2>
+            <p class="section-subtitle">Get to know me better</p>
+          </div>
+
+          <div class="about-content">
+            <div class="about-text">
+              <h3>
+                Passionate about
+                <span class="highlight">Backend Engineering</span>
+              </h3>
+              <p>
+                Motivated postgraduate computer applications student and
+                aspiring software developer with strong skills in Java, SQL, and
+                cloud technologies. Passionate about backend development and
+                scalable systems. Experienced in academic and personal projects,
+                including web applications and database design. Continuously
+                learning, building, and preparing to contribute effectively in
+                professional tech environments.
+              </p>
+
+              <div class="about-btns" style="margin-bottom: 30px">
+                <a
+                  href="Raushan Kumar Software_Developer.pdf"
+                  download
+                  class="btn btn-primary"
+                  ><i class="fa-solid fa-download"></i> Download Resume</a
+                >
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <span class="stat-number">1+</span>
+                  <span class="stat-label">Years Exp.</span>
                 </div>
-
-                <div class="qualification-container">
-                    <div class="qualification-tabs">
-                        <div class="qualification-button button-education active" data-target="#education">
-                            <i class="fa-solid fa-graduation-cap"></i> Education
-                        </div>
-                        <div class="qualification-button button-work" data-target="#work">
-                            <i class="fa-solid fa-briefcase"></i> Work
-                        </div>
-                    </div>
-
-                    <div class="qualification-sections">
-                        <!-- Education Content -->
-                        <div class="qualification-content active" id="education">
-                            <div class="qualification-data">
-                                <div>
-                                    <h3 class="qualification-title">Master of Computer Applications</h3>
-                                    <span class="qualification-subtitle">Noida Institute of Engineering & Technology</span>
-                                    <div class="qualification-location">
-                                        <i class="fa-solid fa-location-dot"></i> Greater Noida, UP
-                                    </div>
-                                    <div class="qualification-calendar">
-                                        <i class="fa-solid fa-calendar-days"></i> 2024 - 2026
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification-rounder"></span>
-                                    <span class="qualification-line"></span>
-                                </div>
-                            </div>
-
-                            <div class="qualification-data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification-rounder"></span>
-                                    <span class="qualification-line"></span>
-                                </div>
-                                <div>
-                                    <h3 class="qualification-title">Bachelor of Computer Applications</h3>
-                                    <span class="qualification-subtitle">Ram Lakhan singh yadav College</span>
-                                    <div class="qualification-location">
-                                        <i class="fa-solid fa-location-dot"></i> Bihar, India
-                                    </div>
-                                    <div class="qualification-calendar">
-                                        <i class="fa-solid fa-calendar-days"></i> 2020 - 2023
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Work Content -->
-                        <div class="qualification-content" id="work">
-                            <div class="qualification-data">
-                                <div>
-                                    <h3 class="qualification-title">Backend Developer</h3>
-                                    <span class="qualification-subtitle">Banking Website Project</span>
-                                    <div class="qualification-location">
-                                        <i class="fa-solid fa-users"></i> Team Project
-                                    </div>
-                                    <div class="qualification-calendar">
-                                        <i class="fa-solid fa-calendar-days"></i> Present
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification-rounder"></span>
-                                    <span class="qualification-line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Projects</span>
                 </div>
+                <div class="stat-item">
+                  <span class="stat-number">10+</span>
+                  <span class="stat-label">Happy Clients</span>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Services Section -->
-        <section id="services" class="section services">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">My <span class="highlight">Services</span></h2>
-                    <p class="section-subtitle">What I can do for you</p>
-                </div>
+      <!-- Qualification Section -->
+      <section id="qualification" class="section qualification">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              My <span class="highlight">Qualification</span>
+            </h2>
+            <p class="section-subtitle">Education & Experience</p>
+          </div>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-server"></i>
-                        </div>
-                        <h3>API Development</h3>
-                        <p>Designing RESTful and GraphQL APIs that are robust, secure, and easy to consume.</p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3>Database Design</h3>
-                        <p>Architecting efficient SQL and NoSQL database schemas for optimal data integrity and speed.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-cloud"></i>
-                        </div>
-                        <h3>Cloud Deployment</h3>
-                        <p>Deploying and managing applications on AWS, Azure, or Google Cloud for maximum uptime.</p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h3>System Architecture</h3>
-                        <p>Building scalable microservices and monolithic architectures tailored to business needs.</p>
-                    </div>
-                </div>
+          <div class="qualification-container">
+            <div class="qualification-tabs">
+              <div
+                class="qualification-button button-education active"
+                data-target="#education"
+              >
+                <i class="fa-solid fa-graduation-cap"></i> Education
+              </div>
+              <div class="qualification-button button-work" data-target="#work">
+                <i class="fa-solid fa-briefcase"></i> Work
+              </div>
             </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
-                    <p class="section-subtitle">Some of my recent work</p>
+            <div class="qualification-sections">
+              <!-- Education Content -->
+              <div class="qualification-content active" id="education">
+                <div class="qualification-data">
+                  <div>
+                    <h3 class="qualification-title">
+                      Master of Computer Applications
+                    </h3>
+                    <span class="qualification-subtitle"
+                      >Noida Institute of Engineering & Technology</span
+                    >
+                    <div class="qualification-location">
+                      <i class="fa-solid fa-location-dot"></i> Greater Noida, UP
+                    </div>
+                    <div class="qualification-calendar">
+                      <i class="fa-solid fa-calendar-days"></i> 2024 - 2026
+                    </div>
+                  </div>
+                  <div>
+                    <span class="qualification-rounder"></span>
+                    <span class="qualification-line"></span>
+                  </div>
                 </div>
 
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>Xml</span>
-                                <span>Sqlite</span>
-                            </div>
-                            <h3>Rudra Raushan Bank(SBI)</h3>
-                            <p>Developed Rudra Raushan Bank (SBI), 
-                                a banking application that manages user accounts, deposits, withdrawals, 
-                                and transaction records.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/RudraRaushan01/sbi-banking"><i class="fa-brands fa-github"></i> Code</a>
-                                <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                            </div>
-                        </div>
+                <div class="qualification-data">
+                  <div></div>
+                  <div>
+                    <span class="qualification-rounder"></span>
+                    <span class="qualification-line"></span>
+                  </div>
+                  <div>
+                    <h3 class="qualification-title">
+                      Bachelor of Computer Applications
+                    </h3>
+                    <span class="qualification-subtitle"
+                      >Ram Lakhan singh yadav College</span
+                    >
+                    <div class="qualification-location">
+                      <i class="fa-solid fa-location-dot"></i> Bihar, India
                     </div>
-
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>Html, Css</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <h3>Medical Symptoms Checker</h3>
-                            <p>A medical symptom analysis system designed to help users 
-                                identify possible health conditions based on entered symptoms."</p>
-                            <div class="project-links">
-                                <a href="https://github.com/RudraRaushan01/medical-symptoms"><i class="fa-brands fa-github"></i> Code</a>
-                                <a href="https://symptomps.netlify.app/"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                            </div>
-                        </div>
+                    <div class="qualification-calendar">
+                      <i class="fa-solid fa-calendar-days"></i> 2020 - 2023
                     </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <h3>My Portfolio</h3>
-                            <p>My personal portfolio highlighting projects, skills, and experience in software development.</p>
-                            <div class="project-links">
-                                <a href="https://github.com/RudraRaushan01/Portfolio-R"><i class="fa-brands fa-github"></i> Code</a>
-                                <a href="https://rudraraushan.vercel.app/"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <!-- Work Content -->
+              <div class="qualification-content" id="work">
+                <div class="qualification-data">
+                  <div>
+                    <h3 class="qualification-title">Backend Developer</h3>
+                    <span class="qualification-subtitle"
+                      >Banking Website Project</span
+                    >
+                    <div class="qualification-location">
+                      <i class="fa-solid fa-users"></i> Team Project
+                    </div>
+                    <div class="qualification-calendar">
+                      <i class="fa-solid fa-calendar-days"></i> Present
+                    </div>
+                  </div>
+                  <div>
+                    <span class="qualification-rounder"></span>
+                    <span class="qualification-line"></span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="section projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">My <span class="highlight">Certifications</span></h2>
-                    <p class="section-subtitle">Credentials & Achievements</p>
-                </div>
+      <!-- Services Section -->
+      <section id="services" class="section services">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              My <span class="highlight">Services</span>
+            </h2>
+            <p class="section-subtitle">What I can do for you</p>
+          </div>
 
-                <div class="projects-grid">
-                    <!-- Certification 1 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>AWS</span>
-                                <span>Cloud</span>
-                            </div>
-                            <h3>AWS Academy Graduate - Cloud Foundations - Training Badge</h3>
-                            <p>Validated expertise in designing distributed systems on AWS.</p>
-                            <div class="project-links">
-                                <a href="https://www.credly.com/badges/678160d2-f973-4238-b842-fe41bacc6db6"><i
-                                        class="fa-solid fa-certificate"></i> View Credential</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certification 2 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>Google</span>
-                                <span>Data Analytics</span>
-                            </div>
-                            <h3>Google Cloud Computing Foundations Certificate</h3>
-                            <p>Comprehensive training in data cleaning, analysis, and visualization.</p>
-                            <div class="project-links">
-                                <a href="https://www.credly.com/badges/1a20573d-ca45-4ee7-8650-b1e8dae03aa3/public_url"><i
-                                        class="fa-solid fa-certificate"></i> View Credential</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certification 3 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <div class="project-tags">
-                                <span>Computer Network</span>
-                                <span>Cybersecurity</span>
-                            </div>
-                            <h3>Introduction to Cybersecurity</h3>
-                            <p>In-depth understanding of Introduction to Cybersecurity skills.</p>
-                            <div class="project-links">
-                                <a href="https://www.credly.com/badges/aee400a8-528f-47f0-8702-bf43a7b4a11f"><i
-                                        class="fa-solid fa-certificate"></i> View Credential</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <h3>API Development</h3>
+              <p>
+                Designing RESTful and GraphQL APIs that are robust, secure, and
+                easy to consume.
+              </p>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Contact <span class="highlight">Me</span></h2>
-                    <p class="section-subtitle">Let's work together</p>
-                </div>
-
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="icon"><i class="fa-solid fa-envelope"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>rudraraushan000@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Noida, Uttar Pradesh, India</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <h3>Database Design</h3>
+              <p>
+                Architecting efficient SQL and NoSQL database schemas for
+                optimal data integrity and speed.
+              </p>
             </div>
-        </section>
+
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+              <h3>Cloud Deployment</h3>
+              <p>
+                Deploying and managing applications on AWS, Azure, or Google
+                Cloud for maximum uptime.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3>System Architecture</h3>
+              <p>
+                Building scalable microservices and monolithic architectures
+                tailored to business needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section projects">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              Featured <span class="highlight">Projects</span>
+            </h2>
+            <p class="section-subtitle">Some of my recent work</p>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>Xml</span>
+                  <span>Sqlite</span>
+                </div>
+                <h3>Rudra Raushan Bank(SBI)</h3>
+                <p>
+                  Developed Rudra Raushan Bank (SBI), a banking application that
+                  manages user accounts, deposits, withdrawals, and transaction
+                  records.
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/RudraRaushan01/sbi-banking"
+                    ><i class="fa-brands fa-github"></i> Code</a
+                  >
+                  <a href="#"
+                    ><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>Html, Css</span>
+                  <span>JavaScript</span>
+                </div>
+                <h3>Medical Symptoms Checker</h3>
+                <p>
+                  A medical symptom analysis system designed to help users
+                  identify possible health conditions based on entered
+                  symptoms."
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/RudraRaushan01/medical-symptoms"
+                    ><i class="fa-brands fa-github"></i> Code</a
+                  >
+                  <a href="https://symptomps.netlify.app/"
+                    ><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>React</span>
+                  <span>JavaScript</span>
+                </div>
+                <h3>My Portfolio</h3>
+                <p>
+                  My personal portfolio highlighting projects, skills, and
+                  experience in software development.
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/RudraRaushan01/Portfolio-R"
+                    ><i class="fa-brands fa-github"></i> Code</a
+                  >
+                  <a href="https://rudraraushan.vercel.app/"
+                    ><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications Section -->
+      <section id="certifications" class="section projects">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              My <span class="highlight">Certifications</span>
+            </h2>
+            <p class="section-subtitle">Credentials & Achievements</p>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Certification 1 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>AWS</span>
+                  <span>Cloud</span>
+                </div>
+                <h3>
+                  AWS Academy Graduate - Cloud Foundations - Training Badge
+                </h3>
+                <p>
+                  Validated expertise in designing distributed systems on AWS.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://www.credly.com/badges/678160d2-f973-4238-b842-fe41bacc6db6"
+                    ><i class="fa-solid fa-certificate"></i> View Credential</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Certification 2 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>Google</span>
+                  <span>Data Analytics</span>
+                </div>
+                <h3>Google Cloud Computing Foundations Certificate</h3>
+                <p>
+                  Comprehensive training in data cleaning, analysis, and
+                  visualization.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://www.credly.com/badges/1a20573d-ca45-4ee7-8650-b1e8dae03aa3/public_url"
+                    ><i class="fa-solid fa-certificate"></i> View Credential</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Certification 3 -->
+            <div class="project-card">
+              <div class="project-content">
+                <div class="project-tags">
+                  <span>Computer Network</span>
+                  <span>Cybersecurity</span>
+                </div>
+                <h3>Introduction to Cybersecurity</h3>
+                <p>
+                  In-depth understanding of Introduction to Cybersecurity
+                  skills.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://www.credly.com/badges/aee400a8-528f-47f0-8702-bf43a7b4a11f"
+                    ><i class="fa-solid fa-certificate"></i> View Credential</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              Contact <span class="highlight">Me</span>
+            </h2>
+            <p class="section-subtitle">Let's work together</p>
+          </div>
+
+          <div class="contact-wrapper">
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <h4>Email</h4>
+                  <p>rudraraushan000@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <h4>Location</h4>
+                  <p>Noida, Uttar Pradesh, India</p>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="from_name"
+                  name="from_name"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="from_email"
+                  name="from_email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your Message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="contactSubmitBtn"
+              >
+                Send Message
+              </button>
+              <div
+                id="formStatus"
+                style="margin-top: 12px; font-size: 0.95rem; display: none"
+              ></div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Rudra. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/rudraraushan01/"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/RudraRaushan01"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            </div>
+      <div class="container">
+        <p>&copy; 2026 Rudra. All Rights Reserved.</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/rudraraushan01/"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/RudraRaushan01"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
         </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
